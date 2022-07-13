@@ -20,9 +20,23 @@ class Recipe
         "gallon"
     );
 
+    public function __construct($title = null)
+    {
+        $this->setTitle($title);
+    }
+
+    public function __toString()
+    {
+        return $this->getTitle();
+    }
+
     public function setTitle($title)
     {
-        $this->title = ucwords($title);
+        if (empty($title)){
+            $this->title = null;
+        } else {
+            $this->title = ucwords($title);
+        }
     }
 
     public function getTitle()
