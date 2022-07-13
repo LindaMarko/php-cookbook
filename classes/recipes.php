@@ -27,7 +27,13 @@ class Recipe
 
     public function __toString()
     {
-        return $this->getTitle();
+        $output = "You are calling a " . __CLASS__ . " object with the title \"";
+        $output .= $this->getTitle() . "\"";
+        $output .= "\nIt is stored in " . basename(__FILE__) . " at" . __DIR__ . ".";
+        $output .= "\nThis display is from line " . __LINE__ . " in method " . __METHOD__;
+        $output .= "\nThe following methods are available for objects on this class: \n";
+        $output .= implode("\n", get_class_methods(__CLASS__));
+        return $output;
     }
 
     public function setTitle($title)
@@ -104,9 +110,5 @@ class Recipe
        return $this->source;
     }
 
-    public function displayRecipe()
-    {
-        return $this->title . " by " . $this->source;
-    }
 }
 
