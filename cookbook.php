@@ -2,24 +2,29 @@
 
 include('classes/recipes.php');
 include('classes/render.php');
+include('classes/recipecollection.php');
+include('inc/allrecipes.php');
 
-$recipe1 = new Recipe("my first recipe");
-$recipe1->setSource = "Grandma Holligan";
-$recipe1->addIngredient("egg", 1);
-$recipe1->addIngredient("flour", 2, "cup");
+$cookbook = new RecipeCollection("Treehouse Recipes");
+$cookbook->addRecipe($lemon_chicken);
+$cookbook->addRecipe($granola_muffins);
+$cookbook->addRecipe($belgian_waffles);
+$cookbook->addRecipe($pepper_casserole);
+$cookbook->addRecipe($lasagna);
+$cookbook->addRecipe($dried_mushroom_ragout);
+$cookbook->addRecipe($rabbit_catalan);
+$cookbook->addRecipe($grilled_salmon_with_fennel);
+$cookbook->addRecipe($pistachio_duck);
+$cookbook->addRecipe($chili_pork);
+$cookbook->addRecipe($crab_cakes);
+$cookbook->addRecipe($beef_medallions);
+$cookbook->addRecipe($silver_dollar_cakes);
+$cookbook->addRecipe($french_toast);
+$cookbook->addRecipe($corn_beef_hash);
+$cookbook->addRecipe($granola);
+$cookbook->addRecipe($spicy_omelette);
+$cookbook->addRecipe($scones);
 
-$recipe2 = new Recipe();
-$recipe2->setSource = "Betty Crocker";
+echo Render::displayRecipe($lemon_chicken);
 
-$recipe1->addInstruction("First instruction");
-$recipe1->addInstruction("Second instruction");
-
-$recipe1->addTag("Breakfast");
-$recipe1->addTag("Main Course");
-
-$recipe1->setYield("6 servings");
-
-echo Render::displayRecipe($recipe1);
-
-// echo $recipe1;
 // echo new Render();
