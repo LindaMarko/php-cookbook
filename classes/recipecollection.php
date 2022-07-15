@@ -66,11 +66,16 @@ class RecipeCollection
                 if (array_key_exists($item . "s", $ingredients)) {
                     $item .= "s";
                 } else if (array_key_exists(substr($item,0,-1),$ingredients)) {
-                    $item = substr($ing, 0, -1);
+                    $item = substr($item, 0, -1);
                 }
                 $ingredients[$item][] = array($ing["amount"],$ing["measure"]);
             }
         }
         return $ingredients;
+    }
+
+    public function filterById($id)
+    {
+        return $this->recipes[$id];
     }
 }
