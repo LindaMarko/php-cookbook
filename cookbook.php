@@ -25,6 +25,7 @@ $cookbook->addRecipe($granola);
 $cookbook->addRecipe($spicy_omelette);
 $cookbook->addRecipe($scones);
 
-echo Render::displayRecipe($lemon_chicken);
+echo Render::listRecipes($cookbook->getRecipeTitles());
+// echo Render::displayRecipe($lemon_chicken);
 
 // echo new Render();
