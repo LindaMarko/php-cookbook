@@ -43,7 +43,8 @@ class RecipeCollection
         return $titles;
     }
 
-    public function filterByTag($tag){
+    public function filterByTag($tag)
+    {
         $taggedRecipes = array();
         foreach ($this->recipes as $recipe) {
             if (in_array(strtolower($tag), $recipe->getTags())) {
@@ -51,5 +52,25 @@ class RecipeCollection
             }
         }
         return $taggedRecipes;
+    }
+
+    public function getCombinedIngredients()
+    {
+        $ingredients = array();
+        foreach ($this->recipes as $recipe) {
+            foreach ($recipe->getIngredients() as $ing) {
+                $item = $ing['item'];
+                if (strpos($item, ",")) {
+                    $item = strstr($item, ",", true);
+                }
+                if (array_key_exists($item . "s", $ingredients)) {
+                    $item .= "s";
+                } else if (array_key_exists(substr($item,0,-1),$ingredients)) {
+                    $item = substr($ing, 0, -1);
+                }
+                $ingredients[$item][] = array($ing["amount"],$ing["measure"]);
+            }
+        }
+        return $ingredients;
     }
 }
